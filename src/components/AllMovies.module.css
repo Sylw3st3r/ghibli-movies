@@ -1,9 +1,9 @@
 .moviesContainer{
-    --unit: 25rem;
+    --unit: 18rem;
     display: grid;
     padding: 3rem;
     margin: 0;
-    gap: 4rem;
+    gap: 6rem;
     grid-template-columns:  repeat(auto-fill, var(--unit));
     list-style: none;
     text-decoration: none;
@@ -31,7 +31,7 @@
 }
 
 .logo{
-    width: 30vw;
+    width: 35rem;
     height: auto;
     margin-top: 2rem;
 }
@@ -40,16 +40,29 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 4rem;
+    margin-bottom: 1rem;
+}
+
+.spinner{
+    min-width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: whitesmoke;
 }
 
 @media only screen and (max-width: 600px) {
     .moviesContainer {
-        grid-template-columns:  repeat(auto-fill, 80vw);
+        grid-template-columns:  repeat(auto-fill, 60vw);
+        gap: 2rem;
         padding-top: 0;
     }
     .logo{
         width: 60vw;
+    }
+    .center{
+        margin-bottom: 2rem;
     }
   
   }
