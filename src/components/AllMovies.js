@@ -13,7 +13,7 @@ export default function AllMovies(){
         try{
             (async () => {
             setIsLoading(true);
-            const response = await fetch("https://ghibliapi.herokuapp.com/films?limit=250", {
+            const response = await fetch("https://ghibliapi.herokuapp.com/films", {
             method: 'GET', 
             mode: 'cors', 
             cache: 'default',

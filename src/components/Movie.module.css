@@ -31,3 +31,12 @@
     opacity: 0.5;
     transform: scale(1.05);
 }
+
+@media only screen and (max-width: 320px) {
+    .listElement h1{
+        margin: 0.5rem 1rem 0.5rem 1rem;
+        font-size: 0.75rem;
+        text-align: center;
+        color: white;
+    }
+  }
