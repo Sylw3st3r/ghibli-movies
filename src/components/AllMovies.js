@@ -42,7 +42,7 @@ export default function AllMovies(){
     } else if(isLoading){
         return (
             <div className={classes.spinner}>
-                <ClipLoader size="10vw"></ClipLoader>;
+                <ClipLoader size="10vw"></ClipLoader>
             </div>
         )
     } else {
