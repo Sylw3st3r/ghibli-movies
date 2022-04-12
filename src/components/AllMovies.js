@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import Movie from "./Movie";
 import classes from './AllMovies.module.css';
-import { ClipLoader } from "react-spinners";
+import Spinner from "./Spinner";
+import logo from "../images/logo.png"
+
 export default function AllMovies(){
     const [moviesData, setMoviesData] = useState([]);
     const [isLoading,setIsLoading] = useState(false);
-    const [error, setError] = useState(false);
+    const [error, setError] = useState(null);
 
     useEffect(()=>{
         try{
@@ -32,24 +34,23 @@ export default function AllMovies(){
             }
             })();
         } catch(err){
-            console.log(err)
-            setError(true);
+            setError(err.message);
         }
     },[])
 
     if(error){
-        return <p>Something went wrong!!!</p>
+        return <p>{error}</p>
     } else if(isLoading){
         return (
             <div className={classes.spinner}>
-                <ClipLoader size="10vw"></ClipLoader>
+                <Spinner></Spinner>
             </div>
         )
     } else {
         return (
             <div className={classes.pageContainer}>
                 <div className={classes.center}>
-                    <img class={classes.logo} src="https://www.pngkey.com/png/full/198-1987073_open-studio-ghibli-logo.png" alt="logo"></img>
+                    <img className={classes.logo} src={logo} alt="logo"></img>
                 </div>
                 <ul className={classes.moviesContainer}>
                     {moviesData.map(movie =><Movie id={movie.id} key={movie.id} title={movie.title} image={movie.image}></Movie>)}

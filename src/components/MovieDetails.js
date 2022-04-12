@@ -1,14 +1,15 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { NavLink } from "react-router-dom";
-import { ClipLoader } from "react-spinners";
 import classes from './MovieDetails.module.css';
-
+import Spinner from "./Spinner";
+import logo from "../images/logo.png"
 
 export default function MovieDetails(){
     const {movieId} = useParams();
     const [movieDescriptionData, setMovieDescriptionData] = useState(null);
     const [isLoading,setIsLoading] = useState(false);
+    const [error,setError] = useState(null);
 
     useEffect(()=>{
         try{
@@ -35,28 +36,30 @@ export default function MovieDetails(){
                   }
             })();
         } catch(err) {
-            console.log(err)
+            setError(err.message);
         }
     },[movieId])
 
     if(isLoading){
         return (
             <div className={classes.spinner}>
-                <ClipLoader size="10vw"></ClipLoader>
+                <Spinner></Spinner>
             </div>
         )
+    }else if(error){
+        return <p>{error}</p>
     } else if(movieDescriptionData) {
         return (
             <div className={classes.layout}>
                 <div className={classes.description}>
                     <NavLink to="/">
-                        <img src="https://www.pngkey.com/png/full/198-1987073_open-studio-ghibli-logo.png" alt="logo"></img>  
+                        <img src={logo} alt="logo"></img>  
                     </NavLink>
                     <h1>{movieDescriptionData.title}</h1>   
                     <h1>{movieDescriptionData['original_title']}</h1>   
-                    <h3>{`director: ${movieDescriptionData.director}`}</h3>   
-                    <h3>{`producer: ${movieDescriptionData.producer}`}</h3>   
-                    <h3>{`relese date: ${movieDescriptionData["release_date"]}`}</h3>  
+                    <h2>{`director: ${movieDescriptionData.director}`}</h2>   
+                    <h2>{`producer: ${movieDescriptionData.producer}`}</h2>   
+                    <h2>{`relese date: ${movieDescriptionData["release_date"]}`}</h2>  
                     <p>{movieDescriptionData.description}</p>  
                 </div>
             </div>     
