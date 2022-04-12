@@ -8,8 +8,9 @@ export default function AllMovies(){
     const [error, setError] = useState(false);
 
     useEffect(()=>{
-        setIsLoading(true);
-        async function addData(){
+        try{
+            (async () => {
+            setIsLoading(true);
             const response = await fetch("https://ghibliapi.herokuapp.com/films?limit=250", {
             method: 'GET', 
             mode: 'cors', 
@@ -22,15 +23,14 @@ export default function AllMovies(){
                 'Accept': 'application/json'
                 }
             });
-            setIsLoading(false);
             if(response.ok){
                 setMoviesData(await response.json());
+                setIsLoading(false);
             } else {
+                setIsLoading(false);
                 throw new Error(`Something went wrong!!! Status: ${response.status}`);
             }
-        };
-        try{
-            addData();
+            })();
         } catch(err){
             console.log(err)
             setError(true);
@@ -39,19 +39,21 @@ export default function AllMovies(){
 
     if(error){
         return <p>Something went wrong!!!</p>
-    }else if(isLoading){
+    } else if(isLoading){
         return (
-        <div className={classes.spinner}>
-            <ClipLoader size="10vw"></ClipLoader>;
-        </div>
+            <div className={classes.spinner}>
+                <ClipLoader size="10vw"></ClipLoader>;
+            </div>
         )
-    }  else {
+    } else {
         return (
             <div className={classes.pageContainer}>
                 <div className={classes.center}>
-                    <img class={classes.logo} src="https://www.pngkey.com/png/full/198-1987073_open-studio-ghibli-logo.png" alt="kurwa"></img>
+                    <img class={classes.logo} src="https://www.pngkey.com/png/full/198-1987073_open-studio-ghibli-logo.png" alt="logo"></img>
                 </div>
-                <ul className={classes.moviesContainer}>{moviesData.map(movie =><Movie id={movie.id} key={movie.id} title={movie.title} image={movie.image}></Movie>)}</ul>
+                <ul className={classes.moviesContainer}>
+                    {moviesData.map(movie =><Movie id={movie.id} key={movie.id} title={movie.title} image={movie.image}></Movie>)}
+                </ul>
             </div>
         )
     }

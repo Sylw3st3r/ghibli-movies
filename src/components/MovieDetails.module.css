@@ -1,7 +1,14 @@
 .layout{
+    background: url("https://images.unsplash.com/photo-1598957232485-fab51e0ed7e8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1333&q=80");
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-position: center center;
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
     min-height: 100vh;
+    min-width: 100vw;
 }
 
 .spinner{
@@ -13,35 +20,44 @@
     background-color: whitesmoke;
 }
 .description{
-    top: 0;
-    left: 0;
-    padding-left: 1rem;
-    font-size: clamp(1.75rem, 1.25rem + 1vh, 1.8rem);
+    background-color: whitesmoke;
+    border-radius: 10px;
+    max-height: max-content;
+    margin: 1.5rem;
+    padding: 1rem;
+    width: 30rem;
     display: flex;
     flex-direction: column;
-    max-width: 70%;
+    box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.305);
 }
 
 .description *{
     margin: 0;
 }
 
-.layout{
-    background-color: whitesmoke;
-    display: flex;
-    flex-direction: row;
-}
-
 .description h1{
-   font-size: clamp(2.25rem, 2rem + 2vh, 2.5rem);
+    text-align: center;
+    margin-bottom: 0.5rem;
+    font-size: 1.75rem;
 }
 
 .description h3{
-    font-size: clamp(2rem, 1.5rem + 2vh, 2.25rem);
-    line-height: 1.5;
- }
+    margin-bottom: 0.5rem;
+}
 
- .description p{
-    font-size: clamp(1rem, 0.75rem + 1vh, 1.5rem);
-    line-height: 1.5;
- }
+
+.description p{
+    line-height: 1.8;
+}
+
+.description img{
+    width: 60%;
+    height: auto;
+}
+
+.description a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+}
