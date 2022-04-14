@@ -2,7 +2,7 @@
 
 An application that lets you look through Ghibli Studios movies and read their descriptions.
 
-Used Studio Ghibli API
+This application uses Studio Ghibli API
 
 ## Demo 
 
