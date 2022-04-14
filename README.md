@@ -2,7 +2,7 @@
 
 An application that lets you look through Ghibli Studios movies and read their descriptions.
 
-This application uses Studio Ghibli API
+This application uses [Studio Ghibli API](https://ghibliapi.herokuapp.com/)
 
 ## Demo 
 
