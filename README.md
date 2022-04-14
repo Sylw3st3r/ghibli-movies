@@ -1,6 +1,6 @@
 ### Ghibli Movies Catalog
 
-An application that lets you make life look through Ghibli Studios movies and read their descriptions.
+An application that lets you look through Ghibli Studios movies and read their descriptions.
 
 ## Demo 
 
